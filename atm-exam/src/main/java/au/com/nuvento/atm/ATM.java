@@ -1,10 +1,11 @@
 package au.com.nuvento.atm;
 
+
 /**
  * Hello world!
  *
  */
-public class App 
+public class ATM
 {
     public static void main( String[] args )
     {

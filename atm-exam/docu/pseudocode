@@ -49,13 +49,27 @@ Interact with Client
                 IF option is 1 or 2
                     DISPLAY prompt to enter amount
                     IF amount is numeric
-                        IF option 2
+                        IF option is 2
                             IF entered amount is greater than the balance
                                 WRITE Error message
                                 Restart - back to User ID
                             ELSE
-                                show
-
+                                show successful withdrawal message
+                        ELSE IF option is 1
+                            DISPLAY new balance of account
+                    ELSE
+                        WRITE Error message
+                        Restart - back to User ID
+                ELSE IF option is 3
+                    DISPLAY balance of account selected
+                ELSE IF option is q
+                    DISPLAY goodbye message
+                ELSE
+                    WRITE Error message
+                    Restart - back to User ID
+            ELSE
+                WRITE Error message
+                Restart - back to User ID
         ELSE
             Show unknown user message
             Restart - prompt user for user id
@@ -65,4 +79,6 @@ Interact with Client
 
 
 Write out account details
+
+
 Exit

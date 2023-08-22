@@ -1,7 +1,68 @@
-
 Setup
+    READ in files
+        OpeningAccountsData.txt
+        UserInfo.txt
 
-Interact with clients
+    CREATE BankAccounts
+        from OpeningAccounts.txt
+    CREATE Clients
+        from UserInfo.txt
 
-Write new data to files
+Interact with Client
+    WHILE User ID not given
+        PROMPT User for User ID
+        VALIDATE User ID
+    END WHILE
+
+    WHILE User hasn't entered 'q'
+        PROMPT for account number
+        VALIDATE account number
+        IF valid account number
+            DISPLAY with Welcome message
+            DISPLAY option
+                1. For Deposit
+                2. For Withdrawal
+                3. For Balance
+                q. To Quit
+
+            READ user option
+            VALIDATE if user option is correct
+            IF correct
+                DISPLAY client bank accounts
+                IF user id is 001 or 002
+                    DISPLAY account option
+                        1. for account type (account number)
+                        2. for account type (account number)
+                ELSE
+                    DISPLAY account option
+                        1. for account type (account number)
+                END IF
+            ELSE
+                Show unknown user message
+                Restart - prompt user for user id
+            END IF
+
+            READ user account option
+            VALIDATE if user account option is correct
+            IF correct
+                supply account information
+                IF option is 1 or 2
+                    DISPLAY prompt to enter amount
+                    IF amount is numeric
+                        IF option 2
+                            IF entered amount is greater than the balance
+                                WRITE Error message
+                                Restart - back to User ID
+                            ELSE
+                                show
+
+        ELSE
+            Show unknown user message
+            Restart - prompt user for user id
+        END IF
+    END WHILE
+
+
+
+Write out account details
 Exit

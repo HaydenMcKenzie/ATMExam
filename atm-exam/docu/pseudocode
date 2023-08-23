@@ -74,11 +74,13 @@ Interact with Client
             Show unknown user message
             Restart - prompt user for user id
         END IF
-    END WHILE
+
 
 
 
 Write out account details
-
+    when user enters 'q'
+        REWRTIE starting balance with new balance
+        DISPLAY Account balances for all accounts
 
 Exit

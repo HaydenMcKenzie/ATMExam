@@ -68,7 +68,11 @@ public class ATMachine {
                         System.out.println("How much do you want to Withdrawal:");
                         amount = Integer.parseInt(sc.nextLine());
                         newbalance = cheque - amount;
-                        System.out.println("New Balance: $" + newbalance);
+                        if (newbalance < 0) {
+                            System.out.println("Error - The amount you entered ($" + amount + ") is greater than your balance ($" + cheque + ")");
+                        } else {
+                            System.out.println("New Balance: $" + newbalance);
+                        }
                         break;
                     case "3":
                         System.out.println("Your Balance is: $" + cheque);
@@ -87,7 +91,11 @@ public class ATMachine {
                         System.out.println("How much do you want to Withdrawal:");
                         amount = Integer.parseInt(sc.nextLine());
                         newbalance = saving - amount;
-                        System.out.println("New Balance: $" + newbalance);
+                        if (newbalance < 0) {
+                            System.out.println("Error - The amount you entered ($" + amount + ") is greater than your balance ($" + saving + ")");
+                        } else {
+                            System.out.println("New Balance: $" + newbalance);
+                        }
                         break;
                     case "3":
                         System.out.println("Your Balance is: $" + saving);
@@ -101,6 +109,7 @@ public class ATMachine {
                 System.out.println("Error - Invalid Number. Please Try Again");
                 System.exit(0);
         }
+
         // This is when the Rewrite of the code to the .txt would go
         // Exit
     }

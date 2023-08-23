@@ -10,6 +10,7 @@ public class ATMachine {
         System.out.println("Enter a user ID: ");
         String User = sc.nextLine();
 
+        // Setup based off pseudocode
         String name = null;
         String accounts = null;
         double cheque = 0;
@@ -30,6 +31,7 @@ public class ATMachine {
                 System.exit(0);
         }
 
+        // Interaction based off pseudocode
         String Welcome = "Welcome " + name
         + "\nPlease choose an option:"
         + "\n1. Deposit"
@@ -99,5 +101,7 @@ public class ATMachine {
                 System.out.println("Error - Invalid Number. Please Try Again");
                 System.exit(0);
         }
+        // This is when the Rewrite of the code to the .txt would go
+        // Exit
     }
 }

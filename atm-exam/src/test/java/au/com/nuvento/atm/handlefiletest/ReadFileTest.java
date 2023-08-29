@@ -2,14 +2,13 @@ package au.com.nuvento.atm.handlefiletest;
 
 
 import au.com.nuvento.atm.handlefiles.ReadFile;
-import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReadFileTest {
 
@@ -20,6 +19,7 @@ public class ReadFileTest {
         List<String[]>  userInfo = readFile.getContentsFromFile("data/UserInfo.txt", ",");
 
         assertEquals(userInfo.size(), 4);
+        assertEquals(userInfo.get(0).length, 4);
     }
 }
 

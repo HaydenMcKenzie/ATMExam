@@ -15,5 +15,6 @@ public class ATM
     public static void main( String[] args ) throws FileNotFoundException {
         ReadFile readFile = new ReadFile();
         List<String[]> userData = readFile.getContentsFromFile("atm-exam/data/UserInfo.txt", ",");
+        List<String[]> accountData = readFile.getContentsFromFile("atm-exam/data/OpeningAccountsData.txt", "\\|\\|\\|");
     }
 }

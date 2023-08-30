@@ -9,7 +9,7 @@ public class ClientBuilder {
     public Client createUser(String[] userInfo) {
         HashMap<String, Client> clients = new HashMap<>();
         if (userInfo.length == 4) {
-            return new Client(userInfo[0], userInfo[1], userInfo[2]);
+            return new Client(userInfo[0], userInfo[1], userInfo[2], userInfo[3]);
         }
         return null;
     }

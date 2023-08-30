@@ -1,5 +1,7 @@
 package au.com.nuvento.atm;
 
+import au.com.nuvento.atm.accounts.BankAccount;
+import au.com.nuvento.atm.accounts.BankBuilder;
 import au.com.nuvento.atm.accounts.Client;
 import au.com.nuvento.atm.accounts.ClientBuilder;
 import au.com.nuvento.atm.handlefiles.ReadFile;
@@ -23,6 +25,16 @@ public class ATM
         setup();
         ClientBuilder clientBuilder = new ClientBuilder();
         HashMap<String, Client> clients = clientBuilder.createUser(userData);
+
+        BankBuilder bankBuilder = new BankBuilder();
+        HashMap<String, BankAccount> bankAccount = bankBuilder.createBank(accountData);
+
+        Client c = clients.get("002");
+        System.out.println(c.getFirstName() + " "  + c.getSurname()); // Testing getting name from ClientBuilder
+
+
+        BankAccount b = bankAccount.get("002");
+        System.out.println(b.getOpeningBalance()); // Only grabs the last account
     }
 
 

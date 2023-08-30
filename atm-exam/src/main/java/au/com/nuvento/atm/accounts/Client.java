@@ -5,10 +5,11 @@ public class Client {
     // Initialization
     String FirstName;
     String Surname;
+    String MobileNumber;
     String AccountOwnerID;
 
 
-    // Getter and Setters
+    // Getter & Setter for First Name
     public String getFirstName() {
         return FirstName;
     }
@@ -17,14 +18,19 @@ public class Client {
         FirstName = firstName;
     }
 
-    public String getSurname() {
-        return Surname;
-    }
+    // Getter & Setter for Surname
+    public String getSurname() { return Surname; }
 
     public void setSurname(String surname) {
         Surname = surname;
     }
 
+    // Getter & Setter for Mobile Number
+    public String getMobileNumber() { return MobileNumber; }
+
+    public void setMobileNumber(String mobileNumber) { MobileNumber = mobileNumber;}
+
+    // Getter & Setter for AccountOwnerID
     public String getAccountOwnerID() {
         return AccountOwnerID;
     }
@@ -35,10 +41,10 @@ public class Client {
 
 
     // Main Function
-    public Client(String firstName, String surname, String accountOwnerID) {
+    public Client(String firstName, String surname, String mobileNumber, String accountOwnerID) {
         FirstName = firstName;
         Surname = surname;
+        MobileNumber = mobileNumber;
         AccountOwnerID = accountOwnerID;
     }
-
 }

@@ -9,6 +9,7 @@ import au.com.nuvento.atm.handlefiles.ReadFile;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -29,12 +30,22 @@ public class ATM
         BankBuilder bankBuilder = new BankBuilder();
         HashMap<String, BankAccount> bankAccount = bankBuilder.createBank(accountData);
 
+
         Client c = clients.get("002");
         System.out.println(c.getFirstName() + " "  + c.getSurname()); // Testing getting name from ClientBuilder
 
 
-        BankAccount b = bankAccount.get("002");
-        System.out.println(b.getOpeningBalance()); // Only grabs the last account
+        // Testing getting OpeningBalances
+        Scanner myObj = new Scanner(System.in); // Testing input values for bankaccount
+        String userName = myObj.nextLine(); // test user
+        String option = myObj.nextLine(); // test id
+
+        BankBuilder selectAccount = new BankBuilder(); // import selectAccount
+        String grabAccountInfo = selectAccount.selectAccount(userName, option); // Turning 1 or 2 to accountNumber
+
+
+        BankAccount b = bankAccount.get(grabAccountInfo); // getting accountNumber and Hashmapping it to an account
+        System.out.println(b.getOpeningBalance()); // grabs whatever I need it to.
     }
 
 

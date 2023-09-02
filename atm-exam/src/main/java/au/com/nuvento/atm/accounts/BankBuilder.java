@@ -45,7 +45,7 @@ public class BankBuilder {
         HashMap<String, BankAccount> bankAccount = new HashMap<>();
         info.stream().forEach(x -> {
             BankAccount u = createBank(x);
-            bankAccount.put(u.getAccountOwnerID(), u);
+            bankAccount.put(u.getAccountNumber(), u);
         });
         return bankAccount;
     }

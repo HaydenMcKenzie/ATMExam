@@ -2,8 +2,6 @@ package au.com.nuvento.atm.accountstest;
 
 import au.com.nuvento.atm.accounts.BankBuilder;
 import au.com.nuvento.atm.accounts.BankAccount;
-import au.com.nuvento.atm.accounts.Client;
-import au.com.nuvento.atm.accounts.ClientBuilder;
 import au.com.nuvento.atm.handlefiles.ReadFile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,14 +28,21 @@ public class BankBuilderTest {
         BankBuilder bankBuilder = new BankBuilder();
         HashMap<String, BankAccount> bankAccounts = bankBuilder.createBank(accountData);
 
-        BankAccount c = bankAccounts.get("002");
-        assertEquals(c.getAccountNumber(), "7524155");
-
         BankBuilder selectAccount = new BankBuilder();
         String johnsFirstAccount = selectAccount.selectAccount("001", "1");
         String johnsSecondAccount = selectAccount.selectAccount("001", "2");
+        String LeanneSecondAccount = selectAccount.selectAccount("002", "2");
 
-        System.out.println(johnsFirstAccount);
-        System.out.println(johnsSecondAccount);
+        //testing recall of first account for John
+        BankAccount c = bankAccounts.get(johnsFirstAccount);
+        assertEquals(c.getAccountNumber(), johnsFirstAccount);
+        assertNotEquals(c.getAccountNumber(), johnsSecondAccount);
+        assertNotEquals(c.getAccountNumber(), LeanneSecondAccount);
+
+        //testing recall of second account for John
+        BankAccount d = bankAccounts.get(johnsSecondAccount);
+        assertEquals(d.getAccountNumber(), johnsSecondAccount);
+        assertNotEquals(d.getAccountNumber(), johnsFirstAccount);
+        assertNotEquals(d.getAccountNumber(), LeanneSecondAccount);
     }
 }

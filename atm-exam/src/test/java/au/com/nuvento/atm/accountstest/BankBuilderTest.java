@@ -24,7 +24,7 @@ public class BankBuilderTest {
     }
 
     @Test
-    public void callAccountNumberAndAccountTypeFromOpeningAccountData() throws FileNotFoundException {
+    public void callAccountNumberFromInput1or2ForJohnSmithFromOpeningAccountData() throws FileNotFoundException {
         BankBuilder bankBuilder = new BankBuilder();
         HashMap<String, BankAccount> bankAccounts = bankBuilder.createBank(accountData);
 
@@ -45,4 +45,27 @@ public class BankBuilderTest {
         assertNotEquals(d.getAccountNumber(), johnsFirstAccount);
         assertNotEquals(d.getAccountNumber(), LeanneSecondAccount);
     }
+    @Test
+    public void callAccountNumberFromInput1or2ForLeanneSmithFromOpeningAccountData() throws FileNotFoundException {
+        BankBuilder bankBuilder = new BankBuilder();
+        HashMap<String, BankAccount> bankAccounts = bankBuilder.createBank(accountData);
+
+        BankBuilder selectAccount = new BankBuilder();
+        String LeanneFirstAccount = selectAccount.selectAccount("002", "1");
+        String LeanneSecondAccount = selectAccount.selectAccount("002", "2");
+        String JohnSecondAccount = selectAccount.selectAccount("001", "2");
+
+        //testing recall of first account for Leanne
+        BankAccount c = bankAccounts.get(LeanneFirstAccount);
+        assertEquals(c.getAccountNumber(), LeanneFirstAccount);
+        assertNotEquals(c.getAccountNumber(), LeanneSecondAccount);
+        assertNotEquals(c.getAccountNumber(), JohnSecondAccount);
+
+        //testing recall of second account for Leanne
+        BankAccount d = bankAccounts.get(LeanneSecondAccount);
+        assertEquals(d.getAccountNumber(), LeanneSecondAccount);
+        assertNotEquals(d.getAccountNumber(), LeanneFirstAccount);
+        assertNotEquals(d.getAccountNumber(), JohnSecondAccount);
+    }
+
 }

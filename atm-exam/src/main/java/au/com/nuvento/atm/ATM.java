@@ -17,27 +17,19 @@ import java.util.Scanner;
  */
 public class ATM
 {
-    public static List<String[]> userData;
-    public static List<String[]> accountData;
+    public static HashMap<String, Client> clients;
+    public static HashMap<String, BankAccount> bankAccount;
 
 
+    public static void userInteraction() throws FileNotFoundException {
+        Scanner myObj = new Scanner(System.in); // Testing input values for bankaccount
+        String userName = myObj.nextLine(); // test user
 
-    public static void main( String[] args ) throws FileNotFoundException {
-        setup();
-        ClientBuilder clientBuilder = new ClientBuilder();
-        HashMap<String, Client> clients = clientBuilder.createUser(userData);
-
-        BankBuilder bankBuilder = new BankBuilder();
-        HashMap<String, BankAccount> bankAccount = bankBuilder.createBank(accountData);
-
-
-        Client c = clients.get("002");
+        Client c = clients.get(userName);
         System.out.println(c.getFirstName() + " "  + c.getSurname()); // Testing getting name from ClientBuilder
 
 
         // Testing getting OpeningBalances
-        Scanner myObj = new Scanner(System.in); // Testing input values for bankaccount
-        String userName = myObj.nextLine(); // test user
         String option = myObj.nextLine(); // test id
 
         BankBuilder selectAccount = new BankBuilder(); // import selectAccount
@@ -48,10 +40,21 @@ public class ATM
         System.out.println(b.getOpeningBalance()); // grabs whatever I need it to.
     }
 
+    public static void main( String[] args ) throws FileNotFoundException {
+        setup();
+        userInteraction();
+    }
+
 
     public static void setup() throws FileNotFoundException {
         ReadFile readFile = new ReadFile();
-        userData = readFile.getContentsFromFile("atm-exam/data/UserInfo.txt", ",");
-        accountData = readFile.getContentsFromFile("atm-exam/data/OpeningAccountsData.txt", "\\|\\|\\|");
+        List<String[]> userData = readFile.getContentsFromFile("atm-exam/data/UserInfo.txt", ",");
+        List<String[]> accountData = readFile.getContentsFromFile("atm-exam/data/OpeningAccountsData.txt", "\\|\\|\\|");
+
+        ClientBuilder clientBuilder = new ClientBuilder();
+        clients = clientBuilder.createUser(userData);
+
+        BankBuilder bankBuilder = new BankBuilder();
+        bankAccount = bankBuilder.createBank(accountData);
     }
 }

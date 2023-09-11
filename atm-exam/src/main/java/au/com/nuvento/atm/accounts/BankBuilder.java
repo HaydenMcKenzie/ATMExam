@@ -29,13 +29,7 @@ public class BankBuilder {
             case "003":
                 if (accountSelect.equals("1")) {
                     return "9042221";
-                } else {
-                    System.out.println("Error");
                 }
-                break;
-            default:
-                System.out.println(exitMessage.getActions());
-                break;
         }
         return userID;
     }

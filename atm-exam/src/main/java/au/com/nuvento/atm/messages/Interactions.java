@@ -38,8 +38,17 @@ public class Interactions {
         BankAccount x = bankAccount.get(firstAccount);
         BankAccount y = bankAccount.get(secondAccount);
 
-        System.out.println("1 for " + x.getAccountNumber() + " (" + x.getAccountType() + ")");
-        System.out.println("2 for " + y.getAccountNumber() + " (" + y.getAccountType() + ")");
+        switch (userName) {
+            case "001":
+            case "002":
+                System.out.println("1 for " + x.getAccountNumber() + " (" + x.getAccountType() + ")");
+                System.out.println("2 for " + y.getAccountNumber() + " (" + y.getAccountType() + ")");
+                break;
+            case "003":
+                System.out.println("1 for " + x.getAccountNumber() + " (" + x.getAccountType() + ")");
+                break;
+        }
+
     }
 
     public void enterInAccount(String userName, String options, String userOption) {
@@ -48,6 +57,14 @@ public class Interactions {
         String grabAccountInfo = selectAccount.selectAccount(userName, options); // Turning 1 or 2 to accountNumber
         BankAccount b = bankAccount.get(grabAccountInfo); // getting accountNumber and Hashmapping it to an account
 
-        System.out.println("How much do you wish to " + grabInfo(userOption) + "? Balance = $" + b.getOpeningBalance());
+        switch (userOption) {
+            case "1":
+            case "2":
+                System.out.println("How much do you wish to " + grabInfo(userOption) + "? Balance = $" + b.getOpeningBalance());
+                break;
+            case "3":
+                System.out.println("Your account balance is: $" + b.getOpeningBalance());
+                break;
+        }
     }
 }

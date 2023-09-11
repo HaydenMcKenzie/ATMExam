@@ -1,12 +1,8 @@
 package au.com.nuvento.atm.utils;
 
-import au.com.nuvento.atm.accounts.BankAccount;
-import au.com.nuvento.atm.accounts.BankBuilder;
 import au.com.nuvento.atm.messages.AtmMessages;
 
-import java.util.Scanner;
-
-public class verification {
+public class Verification {
     public String firstInteraction(String userID) {
         switch (userID) {
             case "001":

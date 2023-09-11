@@ -5,8 +5,8 @@ import au.com.nuvento.atm.accounts.BankBuilder;
 import au.com.nuvento.atm.accounts.Client;
 import au.com.nuvento.atm.accounts.ClientBuilder;
 import au.com.nuvento.atm.handlefiles.ReadFile;
-import au.com.nuvento.atm.messages.AtmMessages;
-import au.com.nuvento.atm.utils.verification;
+import au.com.nuvento.atm.messages.*;
+import au.com.nuvento.atm.utils.Verification;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -24,49 +24,29 @@ public class ATM
 
 
     public static void userInteraction() throws FileNotFoundException {
-        AtmMessages welcomeMessage = AtmMessages.INITAL;
-        AtmMessages myOptions = AtmMessages.OPTIONS;
-
-        // Scanner
+        // Imports
         Scanner myObj = new Scanner(System.in); // Testing input values for bankaccount
+        Verification verification = new Verification(); // first validation
+        Interactions interactions = new Interactions();
 
-        // Verification
-        verification Verification = new verification(); // first validication
-
-        // Bank Account
-        BankBuilder selectAccount = new BankBuilder(); // import selectAccount
-
-        System.out.println(welcomeMessage.getActions());
+        // Intro
+        interactions.welcomeInteraction();
         String userName = myObj.nextLine();
-        String result = Verification.firstInteraction(userName);
+        String result = verification.firstInteraction(userName);
 
-
-        Client c = clients.get(userName);
-        System.out.println("Welcome " + c.getFirstName() + " "  + c.getSurname() + ". Please enter an Option"); // Testing getting name from ClientBuilder
-        System.out.println(myOptions.getActions());
+        // Printing Name with Options
+        interactions.userDecision(userName);
         String userOption = myObj.nextLine();
 
 
-        //
-        String grabAccount = selectAccount.accountSelect(userOption);
-        System.out.println("Which account do you want to " + grabAccount + " from:");
-
-        String firstAccount = selectAccount.selectAccount(userName, "1");
-        String secondAccount = selectAccount.selectAccount(userName, "2");
-        BankAccount x = bankAccount.get(firstAccount);
-        BankAccount y = bankAccount.get(secondAccount);
-
-        System.out.println("1 for " + x.getAccountNumber() + " (" + x.getAccountType() + ")");
-        System.out.println("2 for " + y.getAccountNumber() + " (" + y.getAccountType() + ")");
+        // Showing the accounts
+        interactions.showAccount(userName, userOption);
 
 
-        // Testing getting OpeningBalances
-        String option = myObj.nextLine(); // test id
+        // Showing Balance and enter amount
+        String options = myObj.nextLine(); // test id
+        interactions.enterInAccount(userName, options, userOption);
 
-        String grabAccountInfo = selectAccount.selectAccount(userName, option); // Turning 1 or 2 to accountNumber
-        BankAccount b = bankAccount.get(grabAccountInfo); // getting accountNumber and Hashmapping it to an account
-
-        System.out.println("How much do you wish to " + grabAccount + "? Balance = $" + b.getOpeningBalance()); // grabs whatever I need it to.
     }
 
     public static void main( String[] args ) throws FileNotFoundException {

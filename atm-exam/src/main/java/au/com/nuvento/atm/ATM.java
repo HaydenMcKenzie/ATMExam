@@ -44,7 +44,7 @@ public class ATM
 
         // Showing Balance and enter amount
         interactions.enterInAccount(userName, options, userOption);
-        ATM.userInteraction();
+        ATM.userInteraction(); //
     }
 
     public static void main( String[] args ) throws FileNotFoundException {

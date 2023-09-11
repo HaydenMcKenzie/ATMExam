@@ -1,19 +1,23 @@
 package au.com.nuvento.atm.accounts;
 
+import au.com.nuvento.atm.messages.AtmMessages;
+
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 
 public class BankBuilder {
     public String selectAccount(String userID, String accountSelect)  {
+        AtmMessages exitMessage = AtmMessages.ERROR;
         switch (userID) {
             case "001":
                 switch (accountSelect) {
                     case "1":
-                        return "9264945";
+                        return "9264945"; // First account for John
                     case "2":
                         return "7814135";
                 }
+                break;
             case "002":
                 switch (accountSelect) {
                     case "1":
@@ -21,16 +25,39 @@ public class BankBuilder {
                     case "2":
                         return "7524155";
                 }
+                break;
             case "003":
                 if (accountSelect.equals("1")) {
                     return "9042221";
                 } else {
                     System.out.println("Error");
                 }
+                break;
             default:
-                System.out.println("Error");
+                System.out.println(exitMessage.getActions());
+                break;
         }
         return userID;
+    }
+
+    public String accountSelect(String accountSelect)  {
+        AtmMessages errorMessage = AtmMessages.ERROR;
+        AtmMessages exitMessage = AtmMessages.EXIT;
+        switch (accountSelect) {
+            case "1":
+                return "Deposit";
+            case "2":
+                return "Withdraw";
+            case "3":
+                return "Balance";
+            case "q":
+                System.out.println(exitMessage.getActions());
+                System.exit(0);
+            default:
+                System.out.println(errorMessage.getActions());
+                break;
+        }
+        return accountSelect;
     }
 
     public BankAccount createBank(String[] accountInfo) {

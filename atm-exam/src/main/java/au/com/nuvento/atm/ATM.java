@@ -7,6 +7,7 @@ import au.com.nuvento.atm.accounts.Client;
 import au.com.nuvento.atm.accounts.ClientBuilder;
 import au.com.nuvento.atm.handlefiles.ReadFile;
 import au.com.nuvento.atm.messages.*;
+import au.com.nuvento.atm.utils.Commands;
 import au.com.nuvento.atm.utils.Verification;
 
 // Import Java Classes
@@ -26,6 +27,7 @@ public class ATM
         Scanner sc = new Scanner(System.in); // Testing input values for bankaccount
         Verification verification = new Verification(); // first validation
         Interactions interactions = new Interactions();
+        Commands commands = new Commands();
 
         // Intro
         interactions.welcomeInteraction();
@@ -44,13 +46,16 @@ public class ATM
 
         // Showing Balance and enter amount
         interactions.enterInAccount(userName, options, userOption);
+        double userAmount = Integer.parseInt(sc.nextLine());
+        double newBal = commands.newBalance(userName, options, userOption, userAmount);
+        System.out.println(newBal);
+
         ATM.userInteraction(); //
     }
 
     public static void main( String[] args ) throws FileNotFoundException {
         setup();
-        userInteraction();
-        // Write to File
+        userInteraction(); // + Write to file
     }
 
 

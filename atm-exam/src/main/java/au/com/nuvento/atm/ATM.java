@@ -24,8 +24,8 @@ public class ATM
 
     public static void userInteraction() throws FileNotFoundException {
         // Imports
-        Scanner sc = new Scanner(System.in); // Testing input values for bankaccount
-        Verification verification = new Verification(); // first validation
+        Scanner sc = new Scanner(System.in);
+        Verification verification = new Verification();
         Interactions interactions = new Interactions();
         Commands commands = new Commands();
 
@@ -48,9 +48,11 @@ public class ATM
         interactions.enterInAccount(userName, options, userOption);
         double userAmount = Integer.parseInt(sc.nextLine());
         double newBal = commands.newBalance(userName, options, userOption, userAmount);
-        System.out.println(newBal);
+        System.out.println("Your new Balance is: " + newBal);
 
-        ATM.userInteraction(); //
+        // Write to File
+
+        ATM.userInteraction(); // Recall
     }
 
     public static void main( String[] args ) throws FileNotFoundException {

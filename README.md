@@ -12,5 +12,9 @@ ATMExam is project where you interact with an ATM.
 
 # Error Handling
 
-For all incorrect inputs, it displays an Error message and takes you back to the start. 
-If you chose Withdraw and enter an amount that is greater than your balance, it brings up an Withdrawal Error and takes you to the start again. 
+  - For all incorrect inputs, it displays an Error message and takes you back to the start. 
+  - If you chose Withdraw and enter an amount that is greater than your balance, it brings up an Withdrawal Error and takes you to the start again. 
+
+# Other Information
+
+  - I use a .txt file as a pseudo database.

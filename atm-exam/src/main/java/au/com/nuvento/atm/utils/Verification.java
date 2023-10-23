@@ -20,6 +20,7 @@ public class Verification {
             default:
                 AtmMessages errorMessage = AtmMessages.ERROR;
                 System.out.println(errorMessage.getActions());
+                ATM.setup();
                 ATM.userInteraction();
         }
         return userID;
@@ -39,6 +40,7 @@ public class Verification {
             default:
                 AtmMessages errorMessage = AtmMessages.ERROR;
                 System.out.println(errorMessage.getActions());
+                ATM.setup();
                 ATM.userInteraction();
         }
         return userOption;
@@ -57,9 +59,19 @@ public class Verification {
             default:
                 AtmMessages errorMessage = AtmMessages.ERROR;
                 System.out.println(errorMessage.getActions());
+                ATM.setup();
                 ATM.userInteraction();
                 break;
         }
         return options;
+    }
+
+    public void fourthInteraction(double newBal) throws FileNotFoundException {
+        if (newBal < 0) {
+            AtmMessages errorMessage = AtmMessages.ERROR;
+            System.out.println(errorMessage.getActions());
+            ATM.setup();
+            ATM.userInteraction();
+        }
     }
 }

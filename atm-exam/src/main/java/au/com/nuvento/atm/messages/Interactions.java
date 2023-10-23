@@ -1,8 +1,11 @@
 package au.com.nuvento.atm.messages;
 
+import au.com.nuvento.atm.ATM;
 import au.com.nuvento.atm.accounts.BankAccount;
 import au.com.nuvento.atm.accounts.BankBuilder;
 import au.com.nuvento.atm.accounts.Client;
+
+import java.io.FileNotFoundException;
 
 import static au.com.nuvento.atm.ATM.bankAccount;
 import static au.com.nuvento.atm.ATM.clients;
@@ -29,12 +32,12 @@ public class Interactions {
     }
 
     public void showAccount(String userName, String userOption) {
-        BankBuilder selectAccount = new BankBuilder(); // import selectAccount
+        BankBuilder account = new BankBuilder(); // import selectAccount
 
         System.out.println("Which account do you want to " + grabInfo(userOption) + " from:");
 
-        String firstAccount = selectAccount.selectAccount(userName, "1");
-        String secondAccount = selectAccount.selectAccount(userName, "2");
+        String firstAccount = account.selectAccount(userName, "1");
+        String secondAccount = account.selectAccount(userName, "2");
         BankAccount x = bankAccount.get(firstAccount);
         BankAccount y = bankAccount.get(secondAccount);
 
@@ -51,11 +54,11 @@ public class Interactions {
 
     }
 
-    public void enterInAccount(String userName, String options, String userOption) {
+    public void enterInAccount(String userName, String options, String userOption) throws FileNotFoundException {
         BankBuilder selectAccount = new BankBuilder(); // import selectAccount
 
-        String grabAccountInfo = selectAccount.selectAccount(userName, options); // Turning 1 or 2 to accountNumber
-        BankAccount b = bankAccount.get(grabAccountInfo); // getting accountNumber and Hashmapping it to an account
+        String grabAccountInfo = selectAccount.selectAccount(userName, options);
+        BankAccount b = bankAccount.get(grabAccountInfo);
 
         switch (userOption) {
             case "1":
@@ -64,7 +67,8 @@ public class Interactions {
                 break;
             case "3":
                 System.out.println("Your account balance is: $" + b.getOpeningBalance());
-                break;
+                ATM.setup();
+                ATM.userInteraction();
         }
     }
 }

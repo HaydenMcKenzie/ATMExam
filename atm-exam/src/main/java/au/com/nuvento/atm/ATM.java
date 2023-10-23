@@ -9,25 +9,32 @@ import au.com.nuvento.atm.handlefiles.ReadFile;
 import au.com.nuvento.atm.messages.*;
 import au.com.nuvento.atm.utils.Commands;
 import au.com.nuvento.atm.utils.Verification;
+import au.com.nuvento.atm.utils.WriteToFile;
 
 // Import Java Classes
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class ATM
 {
     public static HashMap<String, Client> clients;
     public static HashMap<String, BankAccount> bankAccount;
 
-
+    /**
+     * User Interaction Method
+     * Where user interacts with code to edit accounts
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public static void userInteraction() throws FileNotFoundException {
         // Imports
         Scanner sc = new Scanner(System.in);
         Verification verification = new Verification();
         Interactions interactions = new Interactions();
         Commands commands = new Commands();
+        WriteToFile writeToFile = new WriteToFile();
 
         // Intro
         interactions.welcomeInteraction();
@@ -48,19 +55,32 @@ public class ATM
         interactions.enterInAccount(userName, options, userOption);
         double userAmount = Integer.parseInt(sc.nextLine());
         double newBal = commands.newBalance(userName, options, userOption, userAmount);
+        verification.fourthInteraction(newBal);
         System.out.println("Your new Balance is: " + newBal);
 
         // Write to File
+        writeToFile.reWrite(commands.newWriteBal(userName, options), Double.toString(newBal));
 
-        ATM.userInteraction(); // Recall
+        // Recall
+        ATM.setup();
+        ATM.userInteraction();
     }
 
+    /**
+     * Main Method
+     * @param args Arguments passed to mains
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public static void main( String[] args ) throws FileNotFoundException {
         setup();
         userInteraction(); // + Write to file
     }
 
-
+    /**
+     * Setup Method
+     * Builds the client and bank accounts
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public static void setup() throws FileNotFoundException {
         ReadFile readFile = new ReadFile();
         List<String[]> userData = readFile.getContentsFromFile("atm-exam/data/UserInfo.txt", ",");

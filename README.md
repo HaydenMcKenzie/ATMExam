@@ -10,6 +10,13 @@ ATMExam is project where you interact with an ATM.
   5. If then updates to the new balance and then you repeat from 1. until user enters q.
   6. When you enter q, it prints all the accounts and their new balances.
 
+# Environment
+
+  - IDE: Intellij IDEA
+  - Compiler: Javac
+  - Bytecode: 1.8
+  - SDK: 11.0.12.7
+
 # Error Handling
 
   - For all incorrect inputs, it displays an Error message and takes you back to the start. 

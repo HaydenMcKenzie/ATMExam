@@ -16,6 +16,7 @@ ATMExam is project where you interact with an ATM.
   - Compiler: Javac
   - Bytecode: 1.8
   - SDK: 11.0.12.7
+  - Archetype: Maven Archetype Simple - Version: 1.4
 
 # Error Handling
 

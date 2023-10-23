@@ -7,7 +7,12 @@ import au.com.nuvento.atm.messages.ClosingMessage;
 import java.io.FileNotFoundException;
 
 public class Verification {
-
+    /**
+     * First Interaction Verification
+     * @param userID is user input and is either 001, 002 or 003 - for userID
+     * @return based on input, it is to verify input is correct. If not, to recalls the application and or quits
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public String firstInteraction(String userID) throws FileNotFoundException {
         AtmMessages exitMessage = AtmMessages.EXIT;
         ClosingMessage closingMessage = new ClosingMessage();
@@ -30,6 +35,12 @@ public class Verification {
         return userID;
     }
 
+    /**
+     * Second Interaction Verification
+     * @param userOption is user input and is either 1, 2 or 3        - for Deposit or Withdraw or Balance
+     * @return based on input, it is to verify input is correct. If not, to recalls the application and or quits
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public String secondInteraction(String userOption) throws FileNotFoundException {
         AtmMessages exitMessage = AtmMessages.EXIT;
         ClosingMessage closingMessage = new ClosingMessage();
@@ -52,6 +63,12 @@ public class Verification {
         return userOption;
     }
 
+    /**
+     * Third Interaction Verification
+     * @param options is user input and is either 1 or 2           - for Cheque or Savings accounts
+     * @return based on input, it is to verify input is correct. If not, to recalls the application and or quits
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public String thirdInteraction(String options) throws FileNotFoundException {
         AtmMessages exitMessage = AtmMessages.EXIT;
         ClosingMessage closingMessage = new ClosingMessage();
@@ -74,6 +91,11 @@ public class Verification {
         return options;
     }
 
+    /**
+     * Fourth Interaction Verification
+     * @param newBal is a variable from userInteraction() from ATM. It is to verify weather the New Balance if less than 0. If so, recall application
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public void fourthInteraction(double newBal) throws FileNotFoundException {
         ClosingMessage closingMessage = new ClosingMessage();
         AtmMessages errorMessage = AtmMessages.ERROR;

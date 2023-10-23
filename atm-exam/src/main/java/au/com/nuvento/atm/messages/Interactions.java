@@ -11,13 +11,22 @@ import static au.com.nuvento.atm.ATM.bankAccount;
 import static au.com.nuvento.atm.ATM.clients;
 
 public class Interactions {
-
+    /**
+     * Welcome Interaction
+     * It is an easy call to INITAL message from AtmMessages
+     * @return INITIAL message
+     */
     public void welcomeInteraction() {
         AtmMessages welcomeMessage = AtmMessages.INITAL;
 
         System.out.println(welcomeMessage.getActions());
     }
 
+    /**
+     * User Decision
+     * @param userName is user input and is either 001, 002 or 003  - for userID
+     * @return Welcome message with First and Last name as well account options
+     */
     public void userDecision(String userName) {
         AtmMessages myOptions = AtmMessages.OPTIONS;
 
@@ -26,13 +35,24 @@ public class Interactions {
         System.out.println(myOptions.getActions());
     }
 
+    /**
+     * Grab Information
+     * @param userOption is user input and is either 1, 2 or 3        - for Deposit or Withdraw
+     * @return Deposit for "1", Withdraw for "2" or Balance for "3"
+     */
     public String grabInfo(String userOption) {
         BankBuilder selectAccount = new BankBuilder(); // import selectAccount
         return selectAccount.accountSelect(userOption);
     }
 
+    /**
+     * Show Account
+     * @param userName is user input and is either 001, 002 or 003    - for userID
+     * @param userOption is user input and is either 1, 2 or 3        - for Deposit or Withdraw
+     * @return If it is 001 or 002, print both accounts, else, print one account
+     */
     public void showAccount(String userName, String userOption) {
-        BankBuilder account = new BankBuilder(); // import selectAccount
+        BankBuilder account = new BankBuilder();
 
         System.out.println("Which account do you want to " + grabInfo(userOption) + " from:");
 
@@ -54,6 +74,14 @@ public class Interactions {
 
     }
 
+    /**
+     * Enter In Account
+     * @param userName is user input and is either 001, 002 or 003    - for userID
+     * @param options is user input and is either 1 or 2              - for Cheque or Savings accounts
+     * @param userOption is user input and is either 1, 2 or 3        - for Deposit or Withdraw
+     * @throws FileNotFoundException Thrown if file not in path
+     * @return Prompt for Deposit/Withdraw and or Balance of account
+     */
     public void enterInAccount(String userName, String options, String userOption) throws FileNotFoundException {
         BankBuilder selectAccount = new BankBuilder(); // import selectAccount
 

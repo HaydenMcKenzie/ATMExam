@@ -7,6 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class BankBuilder {
+    /**
+     * Select Account
+     * @param userID is user input and is either 001, 002 or 003 - for userID
+     * @param accountSelect is user input and is either 1 or 2
+     * @return based on userID and accountSelect, returns their accountNo - Had to hard code.
+     */
     public String selectAccount(String userID, String accountSelect)  {
         AtmMessages exitMessage = AtmMessages.ERROR;
         switch (userID) {
@@ -34,6 +40,11 @@ public class BankBuilder {
         return userID;
     }
 
+    /**
+     * Account Select
+     * @param accountSelect is user input and is either 1, 2 or 3
+     * @return Deposit, Withdraw or Balance
+     */
     public String accountSelect(String accountSelect)  {
         AtmMessages errorMessage = AtmMessages.ERROR;
         AtmMessages exitMessage = AtmMessages.EXIT;
@@ -62,6 +73,12 @@ public class BankBuilder {
         return null;
     }
 
+    /**
+     * Create Bank
+     * @param info is from File - From OpeningAccountsData.txt
+     * @return new List
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public HashMap<String, BankAccount> createBank( List<String[]> info ) throws FileNotFoundException {
         HashMap<String, BankAccount> bankAccount = new HashMap<>();
         info.stream().forEach(x -> {

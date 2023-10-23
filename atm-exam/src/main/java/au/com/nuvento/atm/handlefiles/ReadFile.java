@@ -9,7 +9,13 @@ import java.util.Scanner;
 
 
 public class ReadFile {
-
+    /**
+     * Get Contents From File
+     * @param filePath is to location where the file is
+     * @param remove_delim is what delimiter to use
+     * @return a new List
+     * @throws FileNotFoundException Thrown if file not in path
+     */
     public List<String[]> getContentsFromFile(String filePath, String remove_delim) throws FileNotFoundException {
 
         List<String[]> fileData = new ArrayList<>();

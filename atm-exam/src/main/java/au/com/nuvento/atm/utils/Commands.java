@@ -21,8 +21,8 @@ public class Commands {
     public double newBalance(String userName, String options, String userOption, double userAmount) throws FileNotFoundException {
         BankBuilder selectAccount = new BankBuilder();
 
-        String grabAccountInfo = selectAccount.selectAccount(userName, options); // Turning 1 or 2 to accountNumber
-        BankAccount b = bankAccount.get(grabAccountInfo); // getting accountNumber and Hashmapping it to an account
+        String grabAccountInfo = selectAccount.selectAccount(userName, options);
+        BankAccount b = bankAccount.get(grabAccountInfo);
 
         double balance = Double.parseDouble(b.getOpeningBalance());
 
@@ -38,11 +38,18 @@ public class Commands {
         }
         return balance;
     }
+
+    /**
+     * New Write Balance
+     * @param userName is user input and is either 001, 002 or 003 - for userID
+     * @param options is user input and is either 1 or 2           - for Cheque or Savings accounts
+     * @return Opening Balance of selected account
+     */
     public String newWriteBal(String userName, String options) {
         BankBuilder selectAccount = new BankBuilder();
 
-        String grabAccountInfo = selectAccount.selectAccount(userName, options); // Turning 1 or 2 to accountNumber
-        BankAccount b = bankAccount.get(grabAccountInfo); // getting accountNumber and Hashmapping it to an account
+        String grabAccountInfo = selectAccount.selectAccount(userName, options);
+        BankAccount b = bankAccount.get(grabAccountInfo);
 
         return b.getOpeningBalance();
     }

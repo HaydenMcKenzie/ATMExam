@@ -3,6 +3,11 @@ package au.com.nuvento.atm.utils;
 import java.io.*;
 
 public class WriteToFile {
+    /**
+     * Rewrite Method
+     * @param firstInt is Opening Balance of selected account.
+     * @param secondInt is new Balance. Opening Balance +/- Amount
+     */
     public void reWrite(String firstInt, String secondInt) {
         String fileName = "atm-exam/data/OpeningAccountsData.txt"; // Use the actual file name
 

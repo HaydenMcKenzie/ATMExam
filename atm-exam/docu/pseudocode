@@ -9,10 +9,8 @@ Setup
         from UserInfo.txt
 
 Interact with Client
-    WHILE User ID not given
-        PROMPT User for User ID
-        VALIDATE User ID
-    END WHILE
+    PROMPT User for User ID
+    VALIDATE User ID
 
     WHILE User hasn't entered 'q'
         PROMPT for account number
@@ -26,8 +24,8 @@ Interact with Client
                 q. To Quit
 
             READ user option
-            VALIDATE if user option is correct
-            IF correct
+            VALIDATE if user option is numeric and valid
+            IF numeric and valid
                 DISPLAY client bank accounts
                 IF user id is 001 or 002
                     DISPLAY account option

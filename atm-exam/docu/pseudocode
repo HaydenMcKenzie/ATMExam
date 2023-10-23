@@ -35,6 +35,9 @@ Interact with Client
                     DISPLAY account option
                         1. for account type (account number)
                 END IF
+            ELSE IF option is q
+                DISPLAY goodbye message
+                DISPLAY Account balances for all accounts
             ELSE
                 Show unknown user message
                 Restart - prompt user for user id
@@ -53,8 +56,10 @@ Interact with Client
                                 Restart - back to User ID
                             ELSE
                                 show successful withdrawal message
+                                REWRTIE starting balance with new balance
                         ELSE IF option is 1
                             DISPLAY new balance of account
+                            REWRTIE starting balance with new balance
                     ELSE
                         WRITE Error message
                         Restart - back to User ID
@@ -62,23 +67,20 @@ Interact with Client
                     DISPLAY balance of account selected
                 ELSE IF option is q
                     DISPLAY goodbye message
+                    DISPLAY Account balances for all accounts
                 ELSE
                     WRITE Error message
                     Restart - back to User ID
             ELSE
                 WRITE Error message
                 Restart - back to User ID
+        ELSE IF option is q
+            DISPLAY goodbye message
+            DISPLAY Account balances for all accounts
         ELSE
             Show unknown user message
             Restart - prompt user for user id
         END IF
-
-
-
-
-Write out account details
-    when user enters 'q'
-        REWRTIE starting balance with new balance
-        DISPLAY Account balances for all accounts
+    END WHILE
 
 Exit

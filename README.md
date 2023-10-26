@@ -1,7 +1,6 @@
 # ATMExam 
 
-ATMExam is project where you interact with an ATM. 
-
+ATMExam is project where you interact with an [ATM](https://github.com/HaydenMcKenzie/ATMExam/blob/exam_mckenzie_hayden_java_2023_02/atm-exam/src/main/java/au/com/nuvento/atm/ATM.java). 
 # Tutorial
   1. You are prompted for a user ID - 001, 002 or 003.
   2. Then it displays options including: 1. for Deposit, 2. for Withdraw, 3. for Balance or q for Quit.
